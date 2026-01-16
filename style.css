@@ -1,28 +1,80 @@
 body {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  margin: 0;
   background-color: #222;
   color: #fff;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: hidden; /* Prevents scrolling during gameplay */
 }
 
 .game-container {
   text-align: center;
+  touch-action: none; /* Disables browser gestures like pull-to-refresh */
 }
 
 canvas {
   background-color: #000;
   border: 3px solid #0f0;
+  max-width: 90vw;
+  max-height: 60vh;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 h1 {
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
-p {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #ccc;
+.score-board {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+/* D-Pad Layout */
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 20px;
+  width: 210px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn {
+  width: 60px;
+  height: 60px;
+  background: #333;
+  border: 2px solid #444;
+  border-radius: 12px;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+  background: #555;
+  transform: scale(0.95);
+}
+
+.up { grid-column: 2; }
+.left { grid-column: 1; }
+.down { grid-column: 2; }
+.right { grid-column: 3; }
+
+/* Hide mobile controls on desktop screens */
+@media (min-width: 800px) {
+  .controls {
+    display: none;
+  }
 }
